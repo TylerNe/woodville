@@ -1,9 +1,10 @@
-// Cloudinary Gallery for GitHub Pages (Client-side only)
-class CloudinaryGallerySimple {
+// Cloudinary Gallery Real-time (Không cần cập nhật file JSON)
+class CloudinaryGalleryRealtime {
     constructor() {
         this.cloudName = 'dqnwatzbo';
         this.folder = 'woodville-gallery';
         this.imageContainer = document.querySelector('.image-container');
+        this.knownImages = new Set(); // Lưu ảnh đã hiển thị
         this.init();
     }
 
@@ -34,83 +35,25 @@ class CloudinaryGallerySimple {
             console.log('🔄 Loading images from Cloudinary...');
             
             // Sử dụng Cloudinary URL transformation để lấy danh sách ảnh
-            // Thay vì gọi API, chúng ta sẽ sử dụng một danh sách ảnh đã biết
-            const knownImages = await this.getKnownImages();
+            const response = await fetch(`https://res.cloudinary.com/${this.cloudName}/image/list/${this.folder}.json`);
             
-            console.log(`✅ Loaded ${knownImages.length} images from Cloudinary`);
+            if (!response.ok) {
+                throw new Error('Failed to load images from Cloudinary');
+            }
+            
+            const data = await response.json();
+            const images = data.resources || [];
+            
+            console.log(`✅ Loaded ${images.length} images from Cloudinary`);
             
             // Render ảnh
-            this.renderImages(knownImages);
+            this.renderImages(images);
             
         } catch (error) {
             console.error('❌ Error loading images:', error);
             // Fallback to local images
             this.loadLocalImages();
         }
-    }
-
-    // Lấy danh sách ảnh từ JSON file
-    async getKnownImages() {
-        try {
-            // Load từ file JSON local
-            const response = await fetch('images-list.json');
-            if (!response.ok) {
-                throw new Error('Failed to load images list');
-            }
-            
-            const data = await response.json();
-            return data.images.map(img => ({
-                public_id: img.name,
-                secure_url: img.url,
-                tags: img.tags,
-                context: {
-                    category: img.category
-                }
-            }));
-        } catch (error) {
-            console.error('Error loading images list:', error);
-            // Fallback to hardcoded list
-            return this.getFallbackImages();
-        }
-    }
-
-    // Fallback images nếu JSON không load được
-    getFallbackImages() {
-        const imageNames = [
-            'arndale2', 'bao-arndale', 'bao-cho', 'bao-harry', 'bao-ngu',
-            'bao0hary2', 'bao3', 'bao4', 'baocho1', 'baola',
-            'bien', 'bien-3', 'david', 'david-hotdog', 'ethan',
-            'gducky', 'harry-city', 'harry-kem', 'harry-outdoor', 'harry-rebel',
-            'harry-sea', 'harry4', 'henry', 'henry-bien', 'henry-city',
-            'henry-dumlingking', 'henry-kem', 'henry-thanhthanh', 'IMG_1745',
-            'james', 'khang-2', 'khang-bao', 'khang-bia', 'khang-bus',
-            'khang-cty1', 'khang-cute', 'khang-du', 'khang-hotpot', 'khang-net',
-            'khang-ngu', 'khang3', 'khangle', 'khoi', 'mck-bia',
-            'mck-ngu', 'mck-rebel', 'mohamad', 'mohamad2', 'ngu212',
-            'rebel', 'soccer2', 'train-david', 'train-flinder', 'trieu',
-            'vinh', 'vinh-depzai', 'vinh-hair', 'vinh-music', 'vinh2',
-            'vinh4', 'vinh5', 'vinh6', 'yousef', 'woodville_IMG_2375',
-            'woodville_IMG_2381'
-        ];
-
-        return imageNames.map(name => ({
-            public_id: name,
-            secure_url: `https://res.cloudinary.com/${this.cloudName}/image/upload/v1755570029/woodville-gallery/${name}.jpg`,
-            tags: name,
-            context: {
-                category: this.getCategoryFromName(name)
-            }
-        }));
-    }
-
-    // Xác định category dựa trên tên file
-    getCategoryFromName(fileName) {
-        if (fileName.includes('bien') || fileName.includes('sea')) return 'beach';
-        if (fileName.includes('soccer') || fileName.includes('IMG_1745')) return 'sport';
-        if (fileName.includes('hotpot') || fileName.includes('kem') || fileName.includes('dumlingking') || fileName.includes('thanhthanh') || fileName.includes('hotdog')) return 'eat';
-        if (fileName.includes('city') || fileName.includes('train') || fileName.includes('rebel') || fileName.includes('arndale') || fileName.includes('flinder')) return 'cty';
-        if (fileName.includes('nui') || fileName.includes('outdoor')) return 'nui';
-        return 'wv'; // WoodVille là default
     }
 
     // Load ảnh local (fallback)
@@ -161,6 +104,13 @@ class CloudinaryGallerySimple {
 
     // Thêm ảnh vào gallery
     addImageToGallery(imageUrl, category, tags, fileName) {
+        // Kiểm tra xem ảnh đã tồn tại chưa
+        if (this.knownImages.has(fileName)) {
+            return;
+        }
+        
+        this.knownImages.add(fileName);
+        
         const img = document.createElement('img');
         
         img.src = imageUrl;
@@ -181,26 +131,50 @@ class CloudinaryGallerySimple {
 
     // Setup auto refresh
     setupAutoRefresh() {
-        // Refresh every 60 seconds (ít hơn để tránh rate limit)
+        // Refresh every 30 seconds để kiểm tra ảnh mới
         setInterval(() => {
-            this.refreshGallery();
-        }, 60000);
+            this.checkForNewImages();
+        }, 30000);
         
         // Also refresh when window gains focus
         window.addEventListener('focus', () => {
-            this.refreshGallery();
+            this.checkForNewImages();
         });
     }
 
-    // Refresh gallery
-    async refreshGallery() {
-        const currentCount = this.imageContainer.children.length;
-        await this.loadImagesFromCloudinary();
-        
-        const newCount = this.imageContainer.children.length;
-        if (newCount > currentCount) {
-            console.log(`🆕 Found ${newCount - currentCount} new images`);
-            this.showNotification(`Đã cập nhật ${newCount - currentCount} ảnh mới!`);
+    // Kiểm tra ảnh mới
+    async checkForNewImages() {
+        try {
+            const response = await fetch(`https://res.cloudinary.com/${this.cloudName}/image/list/${this.folder}.json`);
+            
+            if (!response.ok) {
+                return;
+            }
+            
+            const data = await response.json();
+            const images = data.resources || [];
+            
+            // Kiểm tra ảnh mới
+            let newImagesCount = 0;
+            images.forEach(image => {
+                if (!this.knownImages.has(image.public_id)) {
+                    this.addImageToGallery(
+                        image.secure_url,
+                        image.context?.category || 'wv',
+                        image.tags || image.public_id,
+                        image.public_id
+                    );
+                    newImagesCount++;
+                }
+            });
+            
+            if (newImagesCount > 0) {
+                console.log(`🆕 Found ${newImagesCount} new images`);
+                this.showNotification(`Đã cập nhật ${newImagesCount} ảnh mới!`);
+            }
+            
+        } catch (error) {
+            console.error('Error checking for new images:', error);
         }
     }
 
@@ -236,7 +210,7 @@ class CloudinaryGallerySimple {
 }
 
 // Initialize Cloudinary Gallery
-const cloudinaryGallery = new CloudinaryGallerySimple();
+const cloudinaryGallery = new CloudinaryGalleryRealtime();
 
 // Make it globally available
 window.cloudinaryGallery = cloudinaryGallery;

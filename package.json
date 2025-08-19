@@ -5,7 +5,8 @@
   "main": "upload_to_cloudinary.js",
   "scripts": {
     "upload": "node upload_to_cloudinary.js",
-    "migrate": "node migrate-to-cloudinary.js"
+    "migrate": "node migrate-to-cloudinary.js",
+    "update-list": "node update-images-list.js"
   },
   "dependencies": {
     "cloudinary": "^1.41.0"

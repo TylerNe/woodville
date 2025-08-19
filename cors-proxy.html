@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Cloudinary CORS Proxy</title>
+</head>
+<body>
+    <h1>Cloudinary CORS Proxy</h1>
+    <p>This page helps bypass CORS restrictions for Cloudinary API calls.</p>
+    
+    <script>
+        // Simple CORS proxy using JSONP technique
+        function loadCloudinaryImages(callback) {
+            const script = document.createElement('script');
+            script.src = 'https://res.cloudinary.com/dqnwatzbo/image/list/woodville-gallery.json?callback=handleImages';
+            document.head.appendChild(script);
+        }
+        
+        function handleImages(data) {
+            console.log('Images loaded:', data);
+            // Send data back to parent window
+            if (window.parent && window.parent !== window) {
+                window.parent.postMessage({
+                    type: 'cloudinary-images',
+                    data: data
+                }, '*');
+            }
+        }
+        
+        // Load images when page loads
+        loadCloudinaryImages();
+    </script>
+</body>
+</html>
