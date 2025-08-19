@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+   <meta charset="UTF-8">
+   <meta http-equiv="X-UA-Compatible" content="IE=edge">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <meta name="keywords" content="woodvillehs, woodvillehs.app, woodville, adelaide, duhocsinh, du, học sinh, học tại adelaide, lỏ, "/>.
+   <title>những thằng lỏ</title>
+
+   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+
+   <!-- custom css file link  -->
+   <link rel="stylesheet" href="css/style.css">
+
+</head>
+<body>
+
+<div id="side-menu" class="fas fa-bars"></div>   
+
+<div class="side-bar">
+   <h1 class="heading">Mấy thằng lỏd</h1>
+   <div class="box">
+      <h3 class="title">search image :</h3>
+      <input type="text" placeholder="search image..." id="search-box">
+   </div>
+   <div class="box">
+      <h3 class="title">category :</h3>
+      <div class="category">
+         <div class="btn active" data-category="all"> all </div>
+         <div class="btn" data-category="wv">WoodVille</div>
+         <div class="btn" data-category="beach">Biển</div>
+         <div class="btn" data-category="eat">Đi ăn</div>
+         <div class="btn" data-category="sport">Sports</div>
+         <div class="btn" data-category="cty">City</div>
+         <div class="btn" data-category="nui">Núi</div>
+   
+      </div>
+   </div>
+   
+   <div class="reset-btn"><div class="btn">reset all</div></div>
+   
+   <!-- Upload Section -->
+   <div class="box">
+      <h3 class="title">upload image :</h3>
+      <div class="upload-area" id="uploadArea">
+         <div class="upload-content">
+            <i class="fas fa-cloud-upload-alt"></i>
+            <p>Kéo thả ảnh vào đây hoặc click để chọn</p>
+            <input type="file" id="fileInput" accept="image/*" multiple style="display: none;">
+         </div>
+      </div>
+             <div class="upload-options">
+          <select id="categorySelect">
+             <option value="wv">WoodVille</option>
+             <option value="beach">Biển</option>
+             <option value="eat">Đi ăn</option>
+             <option value="sport">Sports</option>
+             <option value="cty">City</option>
+             <option value="nui">Núi</option>
+          </select>
+       </div>
+       <button class="upload-btn" id="uploadBtn">
+          <i class="fas fa-upload"></i> Upload to Cloudinary
+       </button>
+   </div>
+</div>
+
+<div class="gallery">
+
+   <h1 class="heading">image gallery</h1>
+
+   <div class="image-container">
+      <img src="https://res.cloudinary.com/dqnwatzbo/image/upload/v1755570149/woodville-gallery/woodville_IMG_2375.jpg" data-cat="wv" data-search="woodville" alt="">
+      <img src="https://res.cloudinary.com/dqnwatzbo/image/upload/v1755570150/woodville-gallery/woodville_IMG_2381.jpg" data-cat="wv" data-search="woodville" alt="">
+      <img src="https://res.cloudinary.com/dqnwatzbo/image/upload/v1755570140/woodville-gallery/vinh.jpg" data-cat="wv" data-search="vinh buoi" alt="">
+      <img src="https://res.cloudinary.com/dqnwatzbo/image/upload/v1755570137/woodville-gallery/vinh-depzai.jpg" data-cat="wv" data-search="vinh buoi" alt="">
+      <img src="https://res.cloudinary.com/dqnwatzbo/image/upload/v1755570138/woodville-gallery/vinh-hair.jpg" data-cat="wv" data-search="vinh buoi" alt="">
+      <img src="https://res.cloudinary.com/dqnwatzbo/image/upload/v1755570139/woodville-gallery/vinh-music.jpg" data-cat="wv" data-search="vinh buoi" alt="">
+      <img src="https://res.cloudinary.com/dqnwatzbo/image/upload/v1755570144/woodville-gallery/vinh4.jpg" data-cat="wv" data-search="vinh buoi" alt="">
+      <img src="https://res.cloudinary.com/dqnwatzbo/image/upload/v1755570146/woodville-gallery/vinh5.jpg" data-cat="wv" data-search="vinh buoi" alt="">
+      <img src="https://res.cloudinary.com/dqnwatzbo/image/upload/v1755570142/woodville-gallery/vinh2.jpg" data-cat="wv" data-search="vinh buoi2" alt="">
+      <img src="https://res.cloudinary.com/dqnwatzbo/image/upload/v1755570073/woodville-gallery/gducky.jpg" data-cat="wv" data-search="gducky" alt="">
+      <img src="https://res.cloudinary.com/dqnwatzbo/image/upload/v1755570110/woodville-gallery/khoi.jpg" data-cat="wv" data-search="khoi" alt="">
+      <img src="https://res.cloudinary.com/dqnwatzbo/image/upload/v1755570109/woodville-gallery/khangle.jpg" data-cat="wv" data-search="khang chaien" alt="">
+      <img src="https://res.cloudinary.com/dqnwatzbo/image/upload/v1755570090/woodville-gallery/james.jpg" data-cat="wv" data-search="james" alt="">
+      <img src="https://res.cloudinary.com/dqnwatzbo/image/upload/v1755570091/woodville-gallery/khang-2.jpg" data-cat="wv" data-search="khang chaien" alt="">
+      <img src="https://res.cloudinary.com/dqnwatzbo/image/upload/v1755570108/woodville-gallery/khang3.jpg" data-cat="wv" data-search="khang chaien" alt="">
+      <img src="https://res.cloudinary.com/dqnwatzbo/image/upload/v1755570089/woodville-gallery/henry.jpg" data-cat="wv" data-search="henry ba tàu" alt="">
+      <img src="https://res.cloudinary.com/dqnwatzbo/image/upload/v1755570045/woodville-gallery/david.jpg" data-cat="wv" data-search="david" alt="">
+      <img src="https://res.cloudinary.com/dqnwatzbo/image/upload/v1755570093/woodville-gallery/khang-bao.jpg" data-cat="eat" data-search="khang bao" alt="">
+      <img src="https://res.cloudinary.com/dqnwatzbo/image/upload/v1755570040/woodville-gallery/baola.jpg" data-cat="wv" data-search="bao" alt="">
+      <img src="https://res.cloudinary.com/dqnwatzbo/image/upload/v1755570036/woodville-gallery/bao3.jpg" data-cat="wv" data-search="bao cho" alt="">
+      <img src="https://res.cloudinary.com/dqnwatzbo/image/upload/v1755570038/woodville-gallery/bao4.jpg" data-cat="wv" data-search="bao cho" alt="">
+      <img src="https://res.cloudinary.com/dqnwatzbo/image/upload/v1755570081/woodville-gallery/harry-sea.jpg" data-cat="beach" data-search="harry khang biển" alt="">
+      <img src="images/bien.jpeg" data-cat="beach" data-search="harry khang biển henry" alt="">
+      <img src="https://res.cloudinary.com/dqnwatzbo/image/upload/v1755569989/woodville-gallery/IMG_1745.jpg" data-cat="sport" data-search="bảo khang boi bơi bao" alt="">
+      <img src="https://res.cloudinary.com/dqnwatzbo/image/upload/v1755570103/woodville-gallery/khang-hotpot.jpg" data-cat="eat" data-search="khang hotpot" alt="">
+      <img src="https://res.cloudinary.com/dqnwatzbo/image/upload/v1755570087/woodville-gallery/henry-kem.jpg" data-cat="eat" data-search="kem henry" alt="">
+      <img src="https://res.cloudinary.com/dqnwatzbo/image/upload/v1755570076/woodville-gallery/harry-outdoor.jpg" data-cat="nui" data-search="ourdoor harry bảo bao núi" alt="">
+      <img src="https://res.cloudinary.com/dqnwatzbo/image/upload/v1755570083/woodville-gallery/henry-bien.jpg" data-cat="beach" data-search="henry harry khang biển" alt="">
+      <img src="https://res.cloudinary.com/dqnwatzbo/image/upload/v1755570041/woodville-gallery/bien-3.jpg" data-cat="beach" data-search="henry harry khang biển" alt="">
+      <img src="https://res.cloudinary.com/dqnwatzbo/image/upload/v1755570088/woodville-gallery/henry-thanhthanh.jpg" data-cat="eat" data-search="henry khang ăn china" alt="">
+      <img src="https://res.cloudinary.com/dqnwatzbo/image/upload/v1755570111/woodville-gallery/mck-bia.jpg" data-cat="cty" data-search="bida bi-a city harry mck" alt="">
+      <img src="https://res.cloudinary.com/dqnwatzbo/image/upload/v1755570134/woodville-gallery/train-flinder.jpg" data-cat="cty" data-search="trốn học flinder train" alt="">
+      <img src="https://res.cloudinary.com/dqnwatzbo/image/upload/v1755570118/woodville-gallery/rebel.jpg" data-cat="cty" data-search="trốn học flinder train" alt="">
+      <img src="https://res.cloudinary.com/dqnwatzbo/image/upload/v1755570074/woodville-gallery/harry-city.jpg" data-cat="cty" data-search="city rebel" alt="">
+      <img src="https://res.cloudinary.com/dqnwatzbo/image/upload/v1755570133/woodville-gallery/train-david.jpg" data-cat="cty" data-search="city harry" alt="">
+      <img src="https://res.cloudinary.com/dqnwatzbo/image/upload/v1755570084/woodville-gallery/henry-city.jpg" data-cat="cty" data-search="city henry" alt="">
+      <img src="https://res.cloudinary.com/dqnwatzbo/image/upload/v1755570031/woodville-gallery/bao-cho.jpg" data-cat="wv" data-search="bao chó harry bảo" alt="">
+      <img src="https://res.cloudinary.com/dqnwatzbo/image/upload/v1755570032/woodville-gallery/bao-harry.jpg" data-cat="wv" data-search="bao chó harry bảo" alt="">
+      <img src="https://res.cloudinary.com/dqnwatzbo/image/upload/v1755570035/woodville-gallery/bao0hary2.jpg" data-cat="wv" data-search="bao chó harry bảo" alt="">
+      <img src="https://res.cloudinary.com/dqnwatzbo/image/upload/v1755570030/woodville-gallery/bao-arndale.jpg" data-cat="wv" data-search="bao bảo arndale" alt="">
+      <img src="https://res.cloudinary.com/dqnwatzbo/image/upload/v1755570095/woodville-gallery/khang-bus.jpg" data-cat="wv" data-search="khang" alt="">
+      <img src="https://res.cloudinary.com/dqnwatzbo/image/upload/v1755570098/woodville-gallery/khang-cute.jpg" data-cat="wv" data-search="khang" alt="">
+      <img src="https://res.cloudinary.com/dqnwatzbo/image/upload/v1755570055/woodville-gallery/ethan.jpg" data-cat="wv" data-search="ethan" alt="">
+      <img src="https://res.cloudinary.com/dqnwatzbo/image/upload/v1755570106/woodville-gallery/khang-ngu.jpg" data-cat="cty" data-search="city khang" alt="">
+      <img src="https://res.cloudinary.com/dqnwatzbo/image/upload/v1755570097/woodville-gallery/khang-cty1.jpg" data-cat="cty" data-search="khang" alt="">
+      <img src="https://res.cloudinary.com/dqnwatzbo/image/upload/v1755570112/woodville-gallery/mck-ngu.jpg" data-cat="cty" data-search="city mck" alt="">
+      <img src="https://res.cloudinary.com/dqnwatzbo/image/upload/v1755570094/woodville-gallery/khang-bia.jpg" data-cat="wv" data-search="khang bia bida harry mck" alt="">
+      <img src="https://res.cloudinary.com/dqnwatzbo/image/upload/v1755570100/woodville-gallery/khang-du.jpg" data-cat="cty" data-search="khang mck" alt="">
+      <img src="https://res.cloudinary.com/dqnwatzbo/image/upload/v1755570039/woodville-gallery/baocho1.png" data-cat="cty" data-search="bao cho ngu" alt="">
+      <img src="https://res.cloudinary.com/dqnwatzbo/image/upload/v1755570085/woodville-gallery/henry-dumlingking.jpg" data-cat="eat" data-search="khang henry dumpling" alt="">
+      <img src="https://res.cloudinary.com/dqnwatzbo/image/upload/v1755570136/woodville-gallery/trieu.jpg" data-cat="wv" data-search="trieu" alt="">
+      <img src="https://res.cloudinary.com/dqnwatzbo/image/upload/v1755570079/woodville-gallery/harry-rebel.jpg" data-cat="wv" data-search="harry rebel" alt="">
+      <img src="images/harry-kem.JPG" data-cat="wv" data-search="harry kem" alt="">
+      <img src="https://res.cloudinary.com/dqnwatzbo/image/upload/v1755570113/woodville-gallery/mck-rebel.jpg" data-cat="wv" data-search="mck rebel" alt="">
+      <img src="https://res.cloudinary.com/dqnwatzbo/image/upload/v1755570147/woodville-gallery/vinh6.jpg" data-cat="wv" data-search="vinh" alt="">
+      <img src="https://res.cloudinary.com/dqnwatzbo/image/upload/v1755570154/woodville-gallery/yousef.jpg" data-cat="wv" data-search="yousef" alt="">
+      <img src="https://res.cloudinary.com/dqnwatzbo/image/upload/v1755570034/woodville-gallery/bao-ngu.jpg" data-cat="wv" data-search="bao" alt="">
+      <img src="https://res.cloudinary.com/dqnwatzbo/image/upload/v1755570104/woodville-gallery/khang-net.jpg" data-cat="wv" data-search="khang net" alt="">
+      <img src="https://res.cloudinary.com/dqnwatzbo/image/upload/v1755570114/woodville-gallery/mohamad.jpg" data-cat="nui" data-search="mohamad" alt="">
+      <img src="https://res.cloudinary.com/dqnwatzbo/image/upload/v1755570116/woodville-gallery/mohamad2.png" data-cat="nui" data-search="mohamad" alt="">
+      <img src="https://res.cloudinary.com/dqnwatzbo/image/upload/v1755570117/woodville-gallery/ngu212.png" data-cat="wv" data-search="mohamad bao david harry" alt="">
+      <img src="https://res.cloudinary.com/dqnwatzbo/image/upload/v1755570044/woodville-gallery/david-hotdog.jpg" data-cat="eat" data-search="david harry " alt="">
+      <img src="https://res.cloudinary.com/dqnwatzbo/image/upload/v1755570082/woodville-gallery/harry4.jpg" data-cat="eat" data-search="arndale harry " alt="">
+      <img src="https://res.cloudinary.com/dqnwatzbo/image/upload/v1755570029/woodville-gallery/arndale2.jpg" data-cat="wv" data-search="harry henry david khang vinh" alt="">
+      <img src="https://res.cloudinary.com/dqnwatzbo/image/upload/v1755570122/woodville-gallery/soccerIMG_2057soccer.jpg" data-cat="sport" data-search="soccer" alt="">
+      <img src="https://res.cloudinary.com/dqnwatzbo/image/upload/v1755570124/woodville-gallery/soccerIMG_2058soccer.jpg" data-cat="sport" data-search="soccer" alt="">
+      <img src="https://res.cloudinary.com/dqnwatzbo/image/upload/v1755570125/woodville-gallery/soccerIMG_2059soccer.jpg" data-cat="sport" data-search="soccer" alt="">
+      <img src="https://res.cloudinary.com/dqnwatzbo/image/upload/v1755570127/woodville-gallery/soccerIMG_2060soccer.jpg" data-cat="sport" data-search="soccer" alt="">
+      <img src="https://res.cloudinary.com/dqnwatzbo/image/upload/v1755570128/woodville-gallery/soccerIMG_2061soccer.jpg" data-cat="sport" data-search="soccer" alt="">
+      <img src="https://res.cloudinary.com/dqnwatzbo/image/upload/v1755570129/woodville-gallery/soccerIMG_2062soccer.jpg" data-cat="sport" data-search="soccer" alt="">
+      <img src="https://res.cloudinary.com/dqnwatzbo/image/upload/v1755570131/woodville-gallery/soccerIMG_2063soccer.jpg" data-cat="sport" data-search="soccer" alt="">
+      <img src="https://res.cloudinary.com/dqnwatzbo/image/upload/v1755570132/woodville-gallery/soccerIMG_2064soccer.jpg" data-cat="sport" data-search="soccer" alt="">
+      <img src="https://res.cloudinary.com/dqnwatzbo/image/upload/v1755570123/woodville-gallery/soccerIMG_2058.jpg" data-cat="sport" data-search="soccer" alt="">
+      <img src="https://res.cloudinary.com/dqnwatzbo/image/upload/v1755570120/woodville-gallery/soccerIMG_2057.jpg" data-cat="sport" data-search="soccer" alt="">
+      <img src="https://res.cloudinary.com/dqnwatzbo/image/upload/v1755570119/woodville-gallery/soccer2.jpg" data-cat="sport" data-search="soccer" alt="">
+      <img src="https://res.cloudinary.com/dqnwatzbo/image/upload/v1755569998/woodville-gallery/Nui.%20NuiIMG_1700.jpg" data-cat="nui" data-search="nui" alt="">
+      <img src="https://res.cloudinary.com/dqnwatzbo/image/upload/v1755570000/woodville-gallery/Nui.%20NuiIMG_1702.jpg" data-cat="nui" data-search="nui" alt="">
+      <img src="https://res.cloudinary.com/dqnwatzbo/image/upload/v1755570002/woodville-gallery/Nui.%20NuiIMG_2273.jpg" data-cat="nui" data-search="nui" alt="">
+      <img src="https://res.cloudinary.com/dqnwatzbo/image/upload/v1755570003/woodville-gallery/Nui.%20NuiIMG_2274.jpg" data-cat="nui" data-search="nui" alt="">
+      <img src="https://res.cloudinary.com/dqnwatzbo/image/upload/v1755570005/woodville-gallery/Nui.%20NuiIMG_2287.jpg" data-cat="nui" data-search="nui" alt="">
+      <img src="https://res.cloudinary.com/dqnwatzbo/image/upload/v1755570006/woodville-gallery/Nui.%20NuiIMG_2288.jpg" data-cat="nui" data-search="nui" alt="">
+      <img src="https://res.cloudinary.com/dqnwatzbo/image/upload/v1755570010/woodville-gallery/Nui.%20NuiIMG_2296.jpg" data-cat="nui" data-search="nui" alt="">
+      <img src="https://res.cloudinary.com/dqnwatzbo/image/upload/v1755570013/woodville-gallery/Nui.%20NuiIMG_2298.jpg" data-cat="nui" data-search="nui" alt="">
+      <img src="https://res.cloudinary.com/dqnwatzbo/image/upload/v1755570015/woodville-gallery/Nui.%20NuiIMG_2301.jpg" data-cat="nui" data-search="nui" alt="">
+      <img src="https://res.cloudinary.com/dqnwatzbo/image/upload/v1755570017/woodville-gallery/Nui.%20NuiIMG_2305.jpg" data-cat="nui" data-search="nui" alt="">
+      <img src="https://res.cloudinary.com/dqnwatzbo/image/upload/v1755570018/woodville-gallery/Nui.%20NuiIMG_2359.jpg" data-cat="nui" data-search="nui" alt="">
+      <img src="https://res.cloudinary.com/dqnwatzbo/image/upload/v1755570020/woodville-gallery/Nui.%20NuiIMG_2360.jpg" data-cat="nui" data-search="nui" alt="">
+      <img src="https://res.cloudinary.com/dqnwatzbo/image/upload/v1755570022/woodville-gallery/Nui.%20NuiIMG_2361.jpg" data-cat="nui" data-search="nui" alt="">
+      <img src="https://res.cloudinary.com/dqnwatzbo/image/upload/v1755570023/woodville-gallery/Nui.%20NuiIMG_7148.jpg" data-cat="nui" data-search="nui" alt="">
+      <img src="https://res.cloudinary.com/dqnwatzbo/image/upload/v1755570025/woodville-gallery/Nui.%20NuiIMG_7176.jpg" data-cat="nui" data-search="nui" alt="">
+      <img src="https://res.cloudinary.com/dqnwatzbo/image/upload/v1755570026/woodville-gallery/Nui.%20NuiIMG_7193.jpg" data-cat="nui" data-search="nui" alt="">
+      <img src="https://res.cloudinary.com/dqnwatzbo/image/upload/v1755570027/woodville-gallery/Nui.%20NuiIMG_7201.jpg" data-cat="nui" data-search="nui" alt="">
+
+     
+   </div>
+
+</div>
+
+<div class="image-popup">
+   <img src="" alt="">
+</div>
+
+
+<script src="js/script.js"></script>
+<script src="js/cloudinary-gallery-simple.js"></script>
+<script src="js/cloudinary-upload-widget.js"></script>
+
+</body>
+</html>

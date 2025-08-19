@@ -38,6 +38,31 @@
    </div>
    
    <div class="reset-btn"><div class="btn">reset all</div></div>
+   
+   <!-- Upload Section -->
+   <div class="box">
+      <h3 class="title">upload image :</h3>
+      <div class="upload-area" id="uploadArea">
+         <div class="upload-content">
+            <i class="fas fa-cloud-upload-alt"></i>
+            <p>Kéo thả ảnh vào đây hoặc click để chọn</p>
+            <input type="file" id="fileInput" accept="image/*" multiple style="display: none;">
+         </div>
+      </div>
+             <div class="upload-options">
+          <select id="categorySelect">
+             <option value="wv">WoodVille</option>
+             <option value="beach">Biển</option>
+             <option value="eat">Đi ăn</option>
+             <option value="sport">Sports</option>
+             <option value="cty">City</option>
+             <option value="nui">Núi</option>
+          </select>
+       </div>
+       <button class="upload-btn" id="uploadBtn">
+          <i class="fas fa-upload"></i> Upload to Cloudinary
+       </button>
+   </div>
 </div>
 
 <div class="gallery">
@@ -149,6 +174,8 @@
 
 
 <script src="js/script.js"></script>
+<script src="js/cloudinary-gallery-simple.js"></script>
+<script src="js/cloudinary-upload-widget.js"></script>
 
 </body>
 </html>

@@ -1,0 +1,13 @@
+{
+  "name": "woodville-gallery",
+  "version": "1.0.0",
+  "description": "Upload images to Cloudinary",
+  "main": "upload_to_cloudinary.js",
+  "scripts": {
+    "upload": "node upload_to_cloudinary.js",
+    "migrate": "node migrate-to-cloudinary.js"
+  },
+  "dependencies": {
+    "cloudinary": "^1.41.0"
+  }
+}
